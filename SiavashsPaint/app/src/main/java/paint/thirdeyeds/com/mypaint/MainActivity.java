@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 colorSwatch.animate().translationY(0);
                 break;
+            case R.id.btnUndo:
+                drawView.undo();
+                break;
+            case R.id.btnRedo:
+                drawView.redo();
+                break;
 
         }
     }
