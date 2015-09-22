@@ -1,5 +1,6 @@
 package paint.thirdeyeds.com.mypaint;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private DrawView drawView;
     private View colorSwatch;
     private View btnColorPicker;
+    private View eraseBtn;
     private SeekBar sbBrushThickness;
+    private boolean eraseEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
         drawView = (DrawView)findViewById(R.id.drawViewMain);
         colorSwatch = findViewById(R.id.colorSwatch);
         btnColorPicker = findViewById(R.id.btnColorPicker);
+        eraseBtn = findViewById(R.id.ivErase);
 
         sbBrushThickness = (SeekBar)findViewById(R.id.sbBrushThickness);
 
+        sbBrushThickness.setProgress((int) ((drawView.getBrushThickness()/MAX_BRUSH_THICKNESS) * 100));
         sbBrushThickness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -57,14 +62,26 @@ public class MainActivity extends AppCompatActivity {
                 }
                 colorSwatch.animate().translationY(0);
                 break;
-            case R.id.btnUndo:
+            case R.id.ivUndo:
                 drawView.undo();
                 break;
-            case R.id.btnRedo:
+            case R.id.ivRedo:
                 drawView.redo();
                 break;
             case R.id.ivColorSwatchCloseBtn:
                 colorSwatch.animate().translationY(colorSwatch.getHeight());
+                break;
+            case R.id.ivErase:
+                if(eraseEnabled){
+                    eraseEnabled = false;
+                    drawView.setDrawingPaint(((ColorDrawable)btnColorPicker.getBackground()).getColor());
+                    eraseBtn.setBackgroundColor(Color.TRANSPARENT);
+
+                }else {
+                    drawView.setDrawingPaint(DrawView.CANVAS_COLOR);
+                    eraseEnabled = true;
+                    eraseBtn.setBackgroundColor(Color.GRAY);
+                }
                 break;
         }
     }

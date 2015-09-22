@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class DrawView extends View {
 
     private static final float DEFAULT_BRUSH_THICKNESS = 20;
+    public static final int CANVAS_COLOR = Color.WHITE;
 
 
     private Path currentPath;
@@ -84,7 +85,7 @@ public class DrawView extends View {
                 canvas.drawPath(cp.path, cp.paint);
             }
         } else {
-            canvas.drawColor(Color.WHITE);
+            canvas.drawColor(CANVAS_COLOR);
         }
         if(drawInProgress) {
             canvas.drawPath(currentPath, drawPaint);
@@ -125,5 +126,9 @@ public class DrawView extends View {
     public void setBrushThickness(float newThickness) {
         brushThickness = newThickness;
         drawPaint.setStrokeWidth(brushThickness);
+    }
+
+    public float getBrushThickness() {
+        return brushThickness;
     }
 }
