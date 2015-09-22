@@ -1,50 +1,54 @@
 package paint.thirdeyeds.com.mypaint;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    RelativeLayout layoutRoot;
-    ImageView ivCanvas;
+
+    private DrawView drawView;
+    private View colorSwatch;
+    private View btnColorPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        layoutRoot = (RelativeLayout) findViewById(R.id.layoutRoot);
-        ivCanvas = (ImageView) findViewById(R.id.ivCanvas);
 
-        ivCanvas.setImageBitmap(BitmapFactory);
+        drawView = (DrawView)findViewById(R.id.drawViewMain);
+        colorSwatch = findViewById(R.id.colorSwatch);
+        btnColorPicker = findViewById(R.id.btnColorPicker);
 
-
-        layoutRoot.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+    }
 
 
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                    case MotionEvent.ACTION_MOVE:
-                    case MotionEvent.ACTION_UP:
+
+    public void buttonHandler(View v){
+        switch (v.getId()){
+            case R.id.btnColorPicker:
+                if(colorSwatch.getVisibility() == View.GONE){
+                    colorSwatch.setTranslationY(colorSwatch.getHeight());
+                    colorSwatch.setVisibility(View.VISIBLE);
                 }
+                colorSwatch.animate().translationY(0);
+                break;
 
-                return false;
-            }
-        });
+        }
+    }
+    public void onColorSelected(View v){
+        int newColor = ((ColorDrawable)v.getBackground()).getColor();
+        drawView.setDrawingPaint(newColor);
+        colorSwatch.animate().translationY(colorSwatch.getHeight());
+        btnColorPicker.setBackgroundColor(newColor);
+    }
 
-        Canvas can = new Canvas();
-        can.drawCircle();
-
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
     }
 
     @Override
