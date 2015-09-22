@@ -23,7 +23,17 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+
+        <ImageView
+
+            android:id="@+id/btnUndo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonHandler"
+            android:src="@drawable/ic_content_undo" />
+        <ImageButton
+            android:padding="@dimen/smallSpace"
+            android:src="@drawable/ic_color_palette"
             android:id="@+id/btnColorPicker"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -31,19 +41,25 @@
             android:background="#000"
             android:onClick="buttonHandler" />
 
-        <Button
-            android:id="@+id/btnUndo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="buttonHandler"
-            android:text="UNDO" />
+        <ImageView
 
-        <Button
             android:id="@+id/btnRedo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="buttonHandler"
-            android:text="REDO" />
+            android:rotationY="180"
+            android:src="@drawable/ic_content_undo" />
+
+        <!--<ImageButton-->
+            <!--android:padding="@dimen/smallSpace"-->
+            <!--android:src="@drawable/ic_brush_thickness"-->
+            <!--android:id="@+id/btnbrushThickness"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:background="#fff"-->
+            <!--android:onClick="buttonHandler" />-->
+
 
 
     </LinearLayout>

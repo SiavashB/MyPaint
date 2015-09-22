@@ -64,7 +64,7 @@ public class DrawView extends View {
                 drawInProgress = false;
                 currentPath.lineTo(x, y);
                 paths.add(new ColoredPath(new Path(currentPath), new Paint(drawPaint)));
-
+                currentPath.reset();
                 break;
             default:
                 return false;
@@ -74,7 +74,7 @@ public class DrawView extends View {
         invalidate();
         return true;
     }
-    
+
     @Override
     protected void onDraw(Canvas canvas) {
         //canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
@@ -84,7 +84,7 @@ public class DrawView extends View {
                 canvas.drawPath(cp.path, cp.paint);
             }
         } else {
-            //canvas.
+            canvas.drawColor(Color.WHITE);
         }
         if(drawInProgress) {
             canvas.drawPath(currentPath, drawPaint);
@@ -106,6 +106,12 @@ public class DrawView extends View {
             invalidate();
         }
     }
+    /**
+     *
+     * I purposely allowed redo to work even after new paths were added becuase it allows for new
+     * possibilites for usability, and does not take anything away or cause any issues. Any unwanted
+     * paths added by redo can be just undone.
+     * */
     public void redo(){
         if(!undonePaths.isEmpty()) {
             paths.add(undonePaths.remove(undonePaths.size() - 1));
@@ -115,5 +121,9 @@ public class DrawView extends View {
 
     public void setDrawingPaint(int color) {
         drawPaint.setColor(color);
+    }
+    public void setBrushThickness(float newThickness) {
+        brushThickness = newThickness;
+        drawPaint.setStrokeWidth(brushThickness);
     }
 }

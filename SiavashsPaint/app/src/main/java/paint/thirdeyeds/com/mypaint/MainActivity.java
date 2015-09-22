@@ -6,13 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
 
+    private static final int MAX_BRUSH_THICKNESS = 50;
     private DrawView drawView;
     private View colorSwatch;
     private View btnColorPicker;
+    private SeekBar sbBrushThickness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,24 @@ public class MainActivity extends AppCompatActivity {
         colorSwatch = findViewById(R.id.colorSwatch);
         btnColorPicker = findViewById(R.id.btnColorPicker);
 
+        sbBrushThickness = (SeekBar)findViewById(R.id.sbBrushThickness);
+
+        sbBrushThickness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                drawView.setBrushThickness(Math.max(MAX_BRUSH_THICKNESS * progress / 100f, 1f));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
 
@@ -42,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnRedo:
                 drawView.redo();
                 break;
-
+            case R.id.ivColorSwatchCloseBtn:
+                colorSwatch.animate().translationY(colorSwatch.getHeight());
+                break;
         }
     }
     public void onColorSelected(View v){

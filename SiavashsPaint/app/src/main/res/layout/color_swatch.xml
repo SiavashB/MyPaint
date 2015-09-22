@@ -1,80 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/colorSwatch"
-    android:visibility="gone"
-    android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/mediumSpace"
-    android:columnCount="4"
-    android:rowCount="2"
+    android:layout_gravity="center"
     android:background="@color/gray"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/mediumSpace"
+    android:visibility="gone">
 
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickBlack"
-        android:background="@android:color/black"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickRed"
-        android:background="@color/red"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickDarkGray"
-        android:background="@color/darkGray"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickOrange"
-        android:background="@color/orange"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPicklightGray"
-        android:background="@color/lightGray"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickYellow"
-        android:background="@color/yellow"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickBlue"
-        android:background="@color/blue"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
-    <View
-        android:onClick="onColorSelected"
-        android:layout_margin="@dimen/smallSpace"
-        android:id="@+id/colorPickGreen"
-        android:background="@color/green"
-        android:layout_width="@dimen/colorSwatchButtonWidth"
-        android:layout_height="@dimen/colorSwatchButtonWidth"
-        />
+    <ImageView
+        android:layout_marginLeft="-15dp"
+        android:layout_marginTop="-15dp"
+        android:id="@+id/ivColorSwatchCloseBtn"
+        android:onClick="buttonHandler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/smallSpace"
+        android:src="@drawable/ic_content_clear"/>
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/gray"
+        android:columnCount="4"
+        android:orientation="vertical"
+        android:padding="@dimen/mediumSpace"
+        android:rowCount="2"
+        >
 
-</GridLayout>
+        <View
+            android:id="@+id/colorPickBlack"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@android:color/black"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPickRed"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/red"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPickDarkGray"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/darkGray"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPickOrange"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/orange"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPicklightGray"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/lightGray"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPickYellow"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/yellow"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPickBlue"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/blue"
+            android:onClick="onColorSelected" />
+
+        <View
+            android:id="@+id/colorPickGreen"
+            android:layout_width="@dimen/colorSwatchButtonWidth"
+            android:layout_height="@dimen/colorSwatchButtonWidth"
+            android:layout_margin="@dimen/smallSpace"
+            android:background="@color/green"
+            android:onClick="onColorSelected" />
+
+    </GridLayout>
+    <TextView
+        android:layout_marginTop="@dimen/largeSpace"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Brush_Thickness"/>
+    <SeekBar
+        android:id="@+id/sbBrushThickness"
+        android:thumb="@drawable/ic_brush_thickness"
+        android:padding="@dimen/mediumSpace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
