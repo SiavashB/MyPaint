@@ -78,14 +78,11 @@ public class DrawView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        //canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
-        //canvas.drawPath(currentPath, drawPaint);
+        canvas.drawColor(CANVAS_COLOR);
         if(!paths.isEmpty()) {
             for (ColoredPath cp : paths) {
                 canvas.drawPath(cp.path, cp.paint);
             }
-        } else {
-            canvas.drawColor(CANVAS_COLOR);
         }
         if(drawInProgress) {
             canvas.drawPath(currentPath, drawPaint);
@@ -130,5 +127,9 @@ public class DrawView extends View {
 
     public float getBrushThickness() {
         return brushThickness;
+    }
+
+    public ArrayList<ColoredPath> getPaths() {
+        return paths;
     }
 }

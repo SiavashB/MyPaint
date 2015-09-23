@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="Brush_Thickness">Brush Thickness:</string>
+    <string name="SaveToGallery">Save to Gallery</string>
+    <string name="Email">Email</string>
 </resources>

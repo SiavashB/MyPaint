@@ -24,13 +24,7 @@
         android:orientation="horizontal">
 
 
-        <ImageView
 
-            android:id="@+id/ivUndo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="buttonHandler"
-            android:src="@drawable/ic_content_undo" />
         <ImageButton
             android:padding="@dimen/smallSpace"
             android:src="@drawable/ic_color_palette"
@@ -49,13 +43,26 @@
             android:rotationY="180"
             android:src="@drawable/ic_erase" />
         <ImageView
+            android:id="@+id/ivUndo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonHandler"
+            android:src="@drawable/ic_content_undo" />
 
+        <ImageView
             android:id="@+id/ivRedo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="buttonHandler"
             android:rotationY="180"
             android:src="@drawable/ic_content_undo" />
+        <ImageView
+            android:id="@+id/ivSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonHandler"
+            android:rotationY="180"
+            android:src="@drawable/ic_content_save" />
 
         <!--<ImageButton-->
             <!--android:padding="@dimen/smallSpace"-->
