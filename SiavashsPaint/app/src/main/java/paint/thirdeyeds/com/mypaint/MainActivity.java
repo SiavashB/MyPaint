@@ -24,7 +24,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
 
-    private static final int MAX_BRUSH_THICKNESS = 50;
+    private static final int MAX_BRUSH_THICKNESS = 150;
     private DrawView drawView;
     private View colorSwatch;
     private View btnColorPicker;
